@@ -20,8 +20,11 @@ RUN apt-get -y install \
         libfontconfig1-dev \
         libxkbcommon-dev
 
-RUN git clone https://codeberg.org/dnkl/foot /foot && mkdir /foot/build
+RUN git clone https://github.com/lbrayner/foot /foot && mkdir /foot/build
 
 WORKDIR /foot
 
-RUN ./pgo/pgo.sh auto . build
+# https://codeberg.org/dnkl/foot/pulls/1099
+RUN git checkout -b add-extended-underlines origin/add-extended-underlines
+
+RUN ./pgo/pgo.sh auto . build -Dext-underline=true

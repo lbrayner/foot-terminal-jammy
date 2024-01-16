@@ -1,13 +1,13 @@
 Build `foot`:
 
 ```bash
-docker build -t foot-terminal-jammy .
+docker build -t foot-terminal-jammy-undercurl .
 ```
 
 Install `foot`:
 
 ```bash
-docker run -it --rm -v /:/destdir foot-terminal-jammy bash -c \
+docker run -it --rm -v /:/destdir foot-terminal-jammy-undercurl bash -c \
     'cd /foot && DESTDIR=/destdir meson install -C build'
 sudo ln -s /usr/local/share/terminfo/f /etc/terminfo
 ```
