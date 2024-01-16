@@ -1,9 +1,14 @@
 FROM ubuntu:jammy
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get -y install \
+
+# Installing meson and ninja first for optimal intermediary cached images
+RUN apt-get update
+RUN apt-get -y install python3-pip
+RUN pip3 install --upgrade pip && pip3 install meson ninja
+
+RUN apt-get -y install \
         git \
-        python3-pip \
         build-essential \
         pkg-config \
         bison \
