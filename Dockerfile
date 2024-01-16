@@ -17,15 +17,8 @@ RUN apt-get -y install \
         wayland-protocols \
         libwayland-dev \
         libpixman-1-dev \
-        libfontconfig1-dev
-
-RUN pip3 install --upgrade pip && pip3 install meson ninja
-
-RUN git clone https://github.com/xkbcommon/libxkbcommon /libxkbcommon
-
-WORKDIR /libxkbcommon
-
-RUN meson setup build -Denable-docs=false && ninja -C build && meson install -C build
+        libfontconfig1-dev \
+        libxkbcommon-dev
 
 RUN git clone https://codeberg.org/dnkl/foot /foot && mkdir /foot/build
 
