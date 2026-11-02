@@ -23,5 +23,6 @@ RUN apt-get -y install \
 RUN git clone https://codeberg.org/dnkl/foot /foot && mkdir /foot/build
 
 WORKDIR /foot
+RUN git checkout 1.25.0
 
 RUN ./pgo/pgo.sh auto . build
